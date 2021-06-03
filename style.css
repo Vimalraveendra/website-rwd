@@ -18,14 +18,15 @@ body {
   position: relative;
 }
 .card {
-  width: 200px;
-  height: 130px;
+  width: 180px;
+  height: 220px;
   position: absolute;
-  background-color: #eee;
+  background-color: rgb(243, 243, 243);
   top: 55px;
   left: 5px;
   border-radius: 10px;
   display: none;
+  z-index: 1;
 }
 
 ul {
@@ -44,7 +45,6 @@ ul {
 /* main section */
 
 .container-fluid {
-  background-color: aqua;
   height: 100vh;
 }
 .row {
@@ -55,14 +55,50 @@ ul {
 .split-bar {
   background-color: black;
 }
-.letter-bar li,
-.split-bar h6 {
-  writing-mode: vertical-rl;
-  text-orientation: upright;
+
+.letter-bar li {
+  text-align: center;
   color: #fff;
   margin: 0;
 }
 
+h6 {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  text-align: center;
+  color: #fff;
+  margin: 0;
+  font-size: 1.25rem;
+  padding-top: 20vh;
+  width: 70%;
+}
+
+.split-bar {
+  height: 100vh;
+}
 .letters li {
-  padding: 10px;
+  padding: 10px 0px;
+  font-size: 1.25rem;
+}
+
+.patient-list {
+  width: 100%;
+}
+.patient-list li {
+  border: 1px solid black;
+  padding: 0 10px;
+  background-color: #eee;
+}
+
+.patient-card {
+  height: 350px;
+  max-width: 100%;
+  background-color: #eee;
+  box-shadow: 4px 5px 3px grey;
+  margin-top: 5rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
