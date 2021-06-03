@@ -9,6 +9,7 @@ body {
   min-height: 100vh;
 }
 
+/* nav section */
 .form-inline {
   margin: 0;
 }
@@ -27,7 +28,7 @@ body {
   display: none;
 }
 
-.list {
+ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -38,4 +39,30 @@ body {
 }
 .done {
   display: block;
+}
+
+/* main section */
+
+.container-fluid {
+  background-color: aqua;
+  height: 100vh;
+}
+.row {
+  margin: 0;
+}
+
+.letter-bar,
+.split-bar {
+  background-color: black;
+}
+.letter-bar li,
+.split-bar h6 {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  color: #fff;
+  margin: 0;
+}
+
+.letters li {
+  padding: 10px;
 }
