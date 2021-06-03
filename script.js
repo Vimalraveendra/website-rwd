@@ -5,6 +5,8 @@ const inputEl = document.querySelector('.form-control')
 const dropDownEl = document.querySelector('.card')
 const ulList = document.querySelector('.list')
 const lettersList = document.querySelector('.letters')
+const patientList = document.querySelector('.patient-list')
+const patientContainerEl = document.querySelector('.card-container')
 
   const usersData=[
     {
@@ -52,19 +54,54 @@ const lettersList = document.querySelector('.letters')
     {
       "id":10012,
       "name":"Denver"
+    },
+    {
+      "id":10013,
+      "name":"Eagle"
+    },
+    {
+      "id":10014,
+      "name":"Entity"
+    },
+    {
+      "id":10015,
+      "name":"Elgar"
+    },
+    {
+      "id":10016,
+      "name":"Fedric"
+    },
+    {
+      "id":10017,
+      "name":"Fernandes"
+    },
+    {
+      "id":10018, 
+      "name":"Felix"
     }
   
   
   ]
 
+  function  filterPatientsList(e){
+    // clearing the parentList container before adding
+    patientList.innerHTML="";
+    let text =e.target.textContent;
+    usersData.forEach(user=>{
+      if(user.name.charAt(0).toLowerCase()===text.toLowerCase()){
+      addPatients(user)
+      }
+    })
+  }
+
   function addLetters(letter){
-    console.log("hello  ")
-    console.log('user',letter)
     const lettersLi = document.createElement('li')
     const letterText = document.createTextNode(letter)
     lettersLi.appendChild(letterText)
+    lettersLi.addEventListener('click',filterPatientsList)
+    lettersLi.addEventListener('mouseleave',renderPatients)
     lettersList.appendChild(lettersLi )
-    // userLi.innerHTML=`
+    // userLi.innerHTML=` 
     //  ${user.name}
     // `
     // ulList.appendChild(userLi)
@@ -80,12 +117,60 @@ const lettersList = document.querySelector('.letters')
   })
   // removing the duplicate values
  letters =[...new Set(letters)]
- console.log("letters",letters)
   letters.forEach(letter=>addLetters(letter))
  
   }
 
-  renderLetters()
+  renderLetters();
+
+
+  function addCard(user){
+    const cardLi=document.createElement('div')
+    cardLi.classList.add('patient-card');
+    cardLi.innerHTML=`
+    <h3>${user.name}</h3>
+      <p>${user.id}</p>
+    `
+    patientContainerEl.appendChild(cardLi)
+  }
+
+  function renderCard(e){
+        //  clearing the  patient container before adding
+    patientContainerEl.innerHTML="";
+    let text = e.target.textContent;
+    usersData.forEach(user=>{
+      if(user.name.toLowerCase()===text.toLowerCase()){
+       addCard(user)
+      }
+    })
+    
+  }
+
+
+function addPatients(user){
+  const patientLi = document.createElement('li')
+  const patientText = document.createTextNode(user.name)
+  patientLi.addEventListener('click',renderCard)
+  patientLi.appendChild(patientText)
+  patientList.appendChild(patientLi )
+  // userLi.innerHTML=`
+  //  ${user.name}
+  // `
+  // ulList.appendChild(userLi)
+
+}
+
+
+ function renderPatients(){
+ // clearing the parentList container before adding
+patientList.innerHTML="";
+usersData.forEach(user=>{
+  addPatients(user)
+})
+
+  }
+
+renderPatients();
 
 
 // rendering dropDown users list based on the letter
@@ -108,6 +193,7 @@ function renderDropDown(e){
     dropDownEl.style.display="none  "
    }
 }
+
 
 
 
